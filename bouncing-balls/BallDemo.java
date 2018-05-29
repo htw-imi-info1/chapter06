@@ -10,6 +10,8 @@ import java.awt.Color;
 
 public class BallDemo   
 {
+    public static final boolean LEAVE_TRACES_ON_GROUND = false;
+    public static final boolean LEAVE_TRACE = false;
     private Canvas myCanvas;
 
     /**
@@ -17,7 +19,7 @@ public class BallDemo
      */
     public BallDemo()
     {
-        myCanvas = new Canvas("Ball Demo", 600, 500);
+        myCanvas = new Canvas("Ball Demo", 600, 500,LEAVE_TRACE);
     }
 
     /**
@@ -31,8 +33,10 @@ public class BallDemo
 
         // draw the ground
         myCanvas.setForegroundColor(Color.BLACK);
-        myCanvas.drawLine(50, ground, 550, ground);
-
+        if (LEAVE_TRACES_ON_GROUND)
+            myCanvas.drawLine(50, ground, 550, ground);
+        else
+            myCanvas.drawLine(50, ground+1, 550, ground+1);
         // create and show the balls
         BouncingBall ball = new BouncingBall(50, 50, 16, Color.BLUE, ground, myCanvas);
         ball.draw();

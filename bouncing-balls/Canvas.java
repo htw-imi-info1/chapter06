@@ -14,6 +14,7 @@ import java.awt.geom.*;
 
 public class Canvas
 {
+    boolean leave_trace = false;
     private JFrame frame;
     private CanvasPane canvas;
     private Graphics2D graphic;
@@ -27,7 +28,7 @@ public class Canvas
      */
     public Canvas(String title)
     {
-        this(title, 300, 300, Color.white);
+        this(title, 300, 300, Color.white, false);
     }
 
     /**
@@ -36,9 +37,9 @@ public class Canvas
      * @param width  the desired width for the canvas
      * @param height  the desired height for the canvas
      */
-    public Canvas(String title, int width, int height)
+    public Canvas(String title, int width, int height, boolean leave_trace)
     {
-        this(title, width, height, Color.white);
+        this(title, width, height, Color.white, leave_trace);
     }
 
     /**
@@ -48,8 +49,9 @@ public class Canvas
      * @param height  the desired height for the canvas
      * @param bgClour  the desired background color of the canvas
      */
-    public Canvas(String title, int width, int height, Color bgColor)
+    public Canvas(String title, int width, int height, Color bgColor, boolean leave_trace)
     {
+        this.leave_trace =  leave_trace;
         frame = new JFrame();
         canvas = new CanvasPane();
         frame.setContentPane(canvas);
@@ -78,6 +80,11 @@ public class Canvas
             graphic.setColor(backgroundColor);
             graphic.fillRect(0, 0, size.width, size.height);
             graphic.setColor(Color.black);
+
+            RenderingHints rh = new RenderingHints(
+                    RenderingHints.KEY_ANTIALIASING,
+                    RenderingHints.VALUE_ANTIALIAS_ON);
+            graphic.setRenderingHints(rh);
         }
         frame.setVisible(true);
     }
@@ -100,7 +107,7 @@ public class Canvas
         graphic.draw(shape);
         canvas.repaint();
     }
- 
+
     /**
      * Fill the internal dimensions of a given shape with the current 
      * foreground color of the canvas.
@@ -155,6 +162,11 @@ public class Canvas
      */
     public void eraseCircle(int xPos, int yPos, int diameter)
     {
+        if (!leave_trace){
+            diameter =  diameter + 2;
+            xPos = xPos -1;
+            yPos = yPos -1;
+        }
         Ellipse2D.Double circle = new Ellipse2D.Double(xPos, yPos, diameter, diameter);
         erase(circle);
     }
