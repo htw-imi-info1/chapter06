@@ -2,8 +2,8 @@ import java.util.*;
 /**
  * Write a description of class Die here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Barne Kleinen
+ * @version 2023.ws.1
  */
 public class Die
 {

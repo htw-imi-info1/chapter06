@@ -70,4 +70,17 @@ public class SupportSystem
     {
         System.out.println("Nice talking to you. Bye...");
     }
+    
+    /**
+     * 
+     * Main Method - The Entry Point to your Java Program.
+     * To run the SupportSystem outside/without BlueJ,
+     * change to the project repository (e.g. cd tech-support1 ) 
+     * and call
+     * java SupportSystem
+     * 
+     */
+    public static void main(String[] args){
+        new SupportSystem().start();
+    }
 }

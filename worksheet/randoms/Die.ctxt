@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Die
-comment0.text=\n\ Write\ a\ description\ of\ class\ Die\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Die\ here.\n\n\ @author\ Barne\ Kleinen\n\ @version\ 2023.ws.1\n
 comment1.params=
 comment1.target=int\ rollDie()
 comment2.params=
